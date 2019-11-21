@@ -1,0 +1,70 @@
+<% include partials/_header %>
+    <div class="container">
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="nombre" placeholder="Inserte Nombre" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="autor" placeholder="Inserte Autor" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" name="genero" placeholder="Inserte genero" class="form-control">
+                            </div>                            
+                            <div class="form-group">
+                                    <input type="text" name="codigo" placeholder="Inserte codigo del libro" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" name="editorial" placeholder="Inserte Editorial" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <input type="number" name="ano" placeholder="Inserte Año de la obra" class="form-control">
+                            </div>                            
+                            <button type="submit" class="btn btn-primary btn-block">Agregar Libro</button>
+                        </form>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="row">
+            <!-- TABLE LIST-->
+            <div class="col-md-12 mt-3">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Autor</th>
+                                <th>Genero</th>                               
+                                <th>Codigo</th>
+                                <th>Editorial</th>
+                                <th>Año</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i = 0; i < tasks.length; i++) {%>
+                                <tr>
+                                    <td><%= i + 1 %></td>
+                                    <td><%= tasks[i].nombre %></td>
+                                    <td><%= tasks[i].autor %></td>
+                                    <td><%= tasks[i].genero %></td>
+                                    <td><%= tasks[i].codigo %></td>
+                                    <td><%= tasks[i].editorial %></td>
+                                    <td><%= tasks[i].ano %></td>
+                                    <td>
+                                        <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger mr-3 ml-2">Eliminar</a>
+                                        <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">Editar</a>
+                                    </td>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+
+<% include partials/_footer %>
