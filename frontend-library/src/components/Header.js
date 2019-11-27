@@ -9,10 +9,10 @@ export const Header = () => (
   >
     <div id="navbarBasicExample">
       <div className="navbar-start">
-        <Link to="/productos" className="navbar-item">
+        <Link to="/libros" className="navbar-item">
           Librería COA
         </Link>
-        <Link to="/productos" className="navbar-item">
+        <Link to="/libros" className="navbar-item">
           Libros
         </Link>
         <Link to="/productos/nuevo" className="navbar-item">

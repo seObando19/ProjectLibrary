@@ -8,38 +8,16 @@ import { RowForm, Error } from './index'
 
 // Hooks
 import { useFormInput } from '../hooks/useFormInput'
-// import { usePOST producto} from '../hooks/usePOST'
+// import { usePOST libro} from '../hooks/usePOST'
 
 const FormIngresar = ({ history }) => {
   const [error, setError] = useState(false)
-  const referencia = useFormInput('')
   const nombre = useFormInput('')
-  const observaciones = useFormInput('')
-  const precio = useFormInput('')
-  const impuesto = useFormInput('')
-  const cantidad = useFormInput('')
-  const estado = useFormInput('Activo')
-  const imagen = useFormInput('')
-
-  const Referencia = () => {
-    return (
-      <div className="field">
-        <label className="label">
-          Referencia {referencia.value === '' ? '👁' : '✔'}
-        </label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="1b02"
-            maxLength="10"
-            required
-            {...referencia}
-          />
-        </div>
-      </div>
-    )
-  }
+  const autor = useFormInput('')
+  const genero = useFormInput('')
+  const codigo = useFormInput('')
+  const editorial = useFormInput('')
+  const ano = useFormInput('')
 
   const Nombre = () => {
     return (
@@ -51,10 +29,8 @@ const FormIngresar = ({ history }) => {
           <input
             className="input"
             type="text"
-            placeholder="PS4"
+            maxLength="10"
             required
-            pattern="[A-Za-z]+"
-            maxLength="50"
             {...nombre}
           />
         </div>
@@ -62,112 +38,81 @@ const FormIngresar = ({ history }) => {
     )
   }
 
-  const Observaciones = () => {
+  const Autor = () => {
+    return (
+      <div className="field">
+        <label className="label">Autor {autor.value === '' ? '👁' : '✔'}</label>
+        <div className="control">
+          <input
+            className="input"
+            type="text"
+            required
+            pattern="[A-Za-z]+"
+            maxLength="50"
+            {...autor}
+          />
+        </div>
+      </div>
+    )
+  }
+
+  const Genero = () => {
     return (
       <Fragment>
         <label className="label">
-          Observaciones {observaciones.value === '' ? '👁' : '✔'}
+          Genero {genero.value === '' ? '👁' : '✔'}
         </label>
         <div className="control">
           <input
             className="input"
             type="text"
-            placeholder="Consola de videojuegos"
             required
             pattern="[A-Za-z]+"
-            {...observaciones}
+            {...genero}
           />
         </div>
       </Fragment>
     )
   }
 
-  const Precio = () => {
+  const Codigo = () => {
     return (
       <div className="field">
         <label className="label">
-          Precio {precio.value === '' ? '👁' : '✔'}
+          Codigo {codigo.value === '' ? '👁' : '✔'}
         </label>
         <div className="control">
-          <input
-            className="input"
-            type="number"
-            placeholder="$1100000"
-            required
-            maxLength="20"
-            pattern="[0-9]+"
-            {...precio}
-          />
+          <input className="input" type="text" required {...codigo} />
         </div>
       </div>
     )
   }
 
-  const Impuesto = () => {
+  const Editorial = () => {
     return (
       <div className="field">
         <label className="label">
-          Impuesto {impuesto.value === '' ? '👁' : '✔'}
+          Editorial {editorial.value === '' ? '👁' : '✔'}
         </label>
         <div className="control">
-          <input
-            className="input"
-            type="number"
-            placeholder="18"
-            required
-            pattern="[0-9]+"
-            {...impuesto}
-          />
+          <input className="input" type="text" required {...editorial} />
         </div>
       </div>
     )
   }
 
-  const Cantidad = () => {
+  const Ano = () => {
     return (
       <div className="field">
-        <label className="label">
-          Cantidad {cantidad.value === '' ? '👁' : '✔'}
-        </label>
+        <label className="label">Año {ano.value === '' ? '👁' : '✔'}</label>
         <div className="control">
           <input
             className="input"
             type="number"
-            placeholder="1"
             maxLength="4"
             required
-            pattern="[0-9]+"
-            {...cantidad}
+            {...ano}
           />
-        </div>
-      </div>
-    )
-  }
-
-  const Estado = () => {
-    return (
-      <div className="field">
-        <label className="label">
-          Estado {estado.value === '' ? '👁' : '✔'}
-        </label>
-        <div className="select">
-          <select {...estado}>
-            <option>Activo</option>
-            <option>Inactivo</option>
-          </select>
-        </div>
-      </div>
-    )
-  }
-
-  const Imagen = () => {
-    return (
-      <div className="field">
-        <label className="label">
-          Imagen {imagen.value === '' ? '👁' : '✔'}
-        </label>
-        <div className="control">
-          <input className="input" type="file" placeholder="img" {...imagen} />
         </div>
       </div>
     )
@@ -190,48 +135,45 @@ const FormIngresar = ({ history }) => {
   const insertarRegistro = async e => {
     e.preventDefault()
     if (
-      referencia.value === '' ||
       nombre.value === '' ||
-      precio.value === '' ||
-      impuesto.value === '' ||
-      cantidad.value === '' ||
-      imagen.value === ''
+      autor.value === '' ||
+      genero.value === '' ||
+      codigo.value === '' ||
+      editorial.value === '' ||
+      ano.value === ''
     ) {
       return setError(true)
     }
     setError(false)
 
-    const producto = {
-      referencia: referencia.value,
+    const libro = {
       nombre: nombre.value,
-      observaciones: observaciones.value,
-      precio: precio.value,
-      impuesto: impuesto.value,
-      cantidad: cantidad.value,
-      estado: estado.value,
-      imagen: imagen.value,
+      autor: autor.value,
+      genero: genero.value,
+      codigo: codigo.value,
+      editorial: editorial.value,
+      ano: ano.value,
     }
 
-    fetch('http://localhost:8089/prueba-aveonline/crud-php/producto.php/', {
+    fetch('http://localhost:4000/add', {
       method: 'POST',
       headers: {
         // 'Accept': 'multipart/form-data',
-        // 'Content-Type': 'application/json'
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(producto),
+      body: JSON.stringify(libro),
     })
       .then(res => {
         console.log(res)
         if (res.statusText === 'OK') {
           Swal.fire({
             type: 'success',
-            title: 'Producto creado',
+            title: 'Libro creado',
             text: 'Se inserto correctamente',
           })
         }
         // Redirigir al usuario
-        history.push('/productos')
+        history.push('/libros')
       })
       .catch(err => {
         console.log(err.message)
@@ -248,18 +190,18 @@ const FormIngresar = ({ history }) => {
       {error ? <Error mensaje={'Todos los campos son obligatorios'} /> : null}
       <form onSubmit={insertarRegistro}>
         <RowForm>
-          <div className="column is-4"> {Referencia()} </div>
           <div className="column is-4"> {Nombre()} </div>
-          <div className="column is-4"> {Precio()} </div>
+          <div className="column is-4"> {Autor()} </div>
+          <div className="column is-4"> {Genero()} </div>
         </RowForm>
         <RowForm>
-          <div className="column is-4"> {Impuesto()} </div>
-          <div className="column is-4"> {Cantidad()} </div>
-          <div className="column is-4"> {Estado()} </div>
+          <div className="column is-4"> {Codigo()} </div>
+          <div className="column is-4"> {Editorial()} </div>
+          <div className="column is-4"> {Ano()} </div>
         </RowForm>
         <RowForm>
-          <div className="column is-6"> {Imagen()} </div>
-          <div className="column is-6"> {Observaciones()} </div>
+          {/* <div className="column is-6"> {Imagen()} </div>
+          <div className="column is-6"> {Observaciones()} </div> */}
         </RowForm>
         <br />
         <br />

@@ -11,25 +11,23 @@ export const Productos = () => {
 
   return (
     <Fragment>
-      <h1 className="title has-text-centered"> Productos </h1>
+      <h1 className="title has-text-centered"> Libros </h1>
       <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th className="has-text-centered">Referencia</th>
             <th className="has-text-centered">Nombre</th>
-            <th className="has-text-centered">Observaciones</th>
-            <th className="has-text-centered">Precio</th>
-            <th className="has-text-centered">Impuesto</th>
-            <th className="has-text-centered">Cantidad</th>
-            <th className="has-text-centered">Estado</th>
-            <th className="has-text-centered">Imagen</th>
+            <th className="has-text-centered">Autor</th>
+            <th className="has-text-centered">Genero</th>
+            <th className="has-text-centered">Código</th>
+            <th className="has-text-centered">Editorial</th>
+            <th className="has-text-centered">Año</th>
             <th className="has-text-centered">Editar</th>
             <th className="has-text-centered">Eliminar</th>
           </tr>
         </thead>
         <tbody>
           {productos.map(producto => (
-            <ProductoLista key={producto.id} producto={producto} />
+            <ProductoLista key={producto._id} producto={producto} />
           ))}
         </tbody>
       </table>
