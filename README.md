@@ -2,8 +2,6 @@
 
 ## Ejecutar proyecto
 
-### Backend
-
 carpeta `projectBackend`
 
 Instalar las dependencias necesarias
