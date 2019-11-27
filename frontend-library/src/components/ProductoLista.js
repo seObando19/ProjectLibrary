@@ -47,7 +47,7 @@ const ProductoLista = ({ producto, history }) => {
         <td>{producto.editorial}</td>
         <td>{producto.ano}</td>
         <td>
-          <Link to={`/libros/edit/${producto._id}`}>Editar</Link>
+          <Link to={`productos/editar/${producto._id}`}>Editar</Link>
         </td>
         <td>
           <button

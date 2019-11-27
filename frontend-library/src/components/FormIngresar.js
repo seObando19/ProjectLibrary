@@ -26,13 +26,7 @@ const FormIngresar = ({ history }) => {
           Nombre {nombre.value === '' ? '👁' : '✔'}
         </label>
         <div className="control">
-          <input
-            className="input"
-            type="text"
-            maxLength="10"
-            required
-            {...nombre}
-          />
+          <input className="input" type="text" required {...nombre} />
         </div>
       </div>
     )
@@ -63,13 +57,7 @@ const FormIngresar = ({ history }) => {
           Genero {genero.value === '' ? '👁' : '✔'}
         </label>
         <div className="control">
-          <input
-            className="input"
-            type="text"
-            required
-            pattern="[A-Za-z]+"
-            {...genero}
-          />
+          <input className="input" type="text" required {...genero} />
         </div>
       </Fragment>
     )

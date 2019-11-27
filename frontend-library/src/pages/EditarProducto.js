@@ -166,7 +166,7 @@ const EditarProducto = ({ match, history }) => {
           <input
             type="submit"
             className="button is-light is-normal is-fullwidth is-inverted is-outlined"
-            value="Ingresar"
+            value="Actualizar"
           />
         </div>
       </div>
@@ -177,15 +177,13 @@ const EditarProducto = ({ match, history }) => {
     e.preventDefault()
 
     const editarProducto = {
-      nombre: nombre.current.value,
+      nombre: nombreref.current.value,
       autor: autorref.current.value,
       genero: generoref.current.value,
       codigo: codigoref.current.value,
       editorial: editorialref.current.value,
-      ano: ano.current.value,
+      ano: anoref.current.value,
     }
-
-    console.log(id)
 
     fetch(`http://localhost:4000/edit/${id}`, {
       method: 'PUT',
@@ -222,9 +220,7 @@ const EditarProducto = ({ match, history }) => {
       {/* {error ? <Error mensaje={'Todos los campos son obligatorios'} /> : null} */}
       <h1 className="title has-text-centered"> Editar Libro </h1>
       <form onSubmit={editarRegistro}>
-        <RowForm>
-          <div className="column is-4"> {ID()} </div>
-        </RowForm>
+        <RowForm>{<div className="column is-4"> {ID()} </div>}</RowForm>
         <RowForm>
           <div className="column is-4"> {Nombre()} </div>
           <div className="column is-4"> {Autor()} </div>
