@@ -10,6 +10,17 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method'
+  );
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
+
 //conectando la BD
 mongoose
   .connect('mongodb://localhost/Library')
@@ -18,7 +29,7 @@ mongoose
 //importar rutas
 const indexRoutes = require('./routes/index');
 //configuraciones
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 //muestra donde esta lacarpeta views
 app.set('views', path.join(__dirname, 'views'));
 //menciona que vamos a usar un motor de pantillas
