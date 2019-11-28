@@ -14,7 +14,7 @@ Ejecutar proyecto por el puerto 4000 (por defecto)
 
 carpeta `frontend-library`
 
-para instalar las dependencias necesarias
+Instalar las dependencias necesarias
 
 ### `npm install`
 
