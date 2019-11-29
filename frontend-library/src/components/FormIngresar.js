@@ -41,8 +41,7 @@ const FormIngresar = ({ history }) => {
             className="input"
             type="text"
             required
-            pattern="[A-Za-z]+"
-            maxLength="50"
+                   
             {...autor}
           />
         </div>

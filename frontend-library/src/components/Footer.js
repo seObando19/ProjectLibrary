@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const Header = () => (
+export const Footer = () => (
   <nav
-    className="navbar is-danger is-active"
+    className="navbar is-danger"
     role="navigation"
     aria-label="main navigation"
   >
