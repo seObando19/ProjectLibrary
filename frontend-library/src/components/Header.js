@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const Header = () => (
   <nav
-    className="navbar is-danger is-active"
+    className="navbar is-danger  is-tab is-active"
     role="navigation"
     aria-label="main navigation"
   >

@@ -8,16 +8,11 @@ export const Footer = () => (
     aria-label="main navigation"
   >
     <div id="navbarBasicExample">
-      <div className="navbar-start">
-        <Link to="/libros" className="navbar-item">
-          Librería COA
-        </Link>
-        <Link to="/libros" className="navbar-item">
-          Libros
-        </Link>
-        <Link to="/productos/nuevo" className="navbar-item">
-          Nuevo libro
-        </Link>
+      <div className="content has-text-centered">
+        <img src="/public/facebook.png"></img>
+        <img src="/public/instagram.png"></img>
+        <img src="public/twiter.png"></img>
+        <img src="public/youtube2.png"></img>
       </div>
     </div>
   </nav>
